@@ -6,14 +6,12 @@ function Remove-ItemIfExists($item) {
 }
 
 function Cleanup() {
-
-    Remove-ItemIfExists ".\TestProject\lib"
+    Remove-ItemIfExists ".\TestProject\lib\YDeliver"
     Remove-ItemIfExists ".\TestProject\build.ps1"
     Remove-ItemIfExists ".\TestProject\build.yml"
 }
 
 function Copy-Libs() {
-    Copy-Item -Recurse .\lib .\TestProject\lib
     Copy-Item -Recurse .\scripts .\TestProject\lib\YDeliver
     Copy-Item TestProject.build.ps1 .\TestProject\build.ps1
     Copy-Item TestProject.build.yml .\TestProject\build.yml

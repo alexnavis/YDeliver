@@ -1,3 +1,5 @@
+# Assumptions made in this script are that the conventions
+# have been loaded and the projects root directory has been set
 
 # PSake is the task execution framework being used
 Import-Module "$($ybc.toolsPath)\PSake\psake.psm1" -force

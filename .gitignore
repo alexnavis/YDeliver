@@ -1,0 +1,8 @@
+build
+obj
+bin
+*ReSharper*
+*resharper*
+*.suo
+*.cache 
+*.user

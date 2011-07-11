@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDeliver.TestProject.Web", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDeliver.TestProject.Core", "YDeliver.TestProject.Core\YDeliver.TestProject.Core.csproj", "{C9AF63B8-1672-4AAD-A026-F5453CA5C793}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDeliver.TestProject.Core.Tests", "YDeliver.TestProject.Core.Tests\YDeliver.TestProject.Core.Tests.csproj", "{C574EB26-3838-4518-BF51-BAA6A393382A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDeliver.TestProject.Core.NUnit.Tests", "YDeliver.TestProject.Core.NUnit.Tests\YDeliver.TestProject.Core.NUnit.Tests.csproj", "{C574EB26-3838-4518-BF51-BAA6A393382A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

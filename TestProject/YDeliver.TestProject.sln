@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDeliver.TestProject.Web", "YDeliver.TestProject.Web\YDeliver.TestProject.Web.csproj", "{A74A1FB5-3BFF-4092-B985-E69DF94E6581}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDeliver.TestProject.Core", "YDeliver.TestProject.Core\YDeliver.TestProject.Core.csproj", "{C9AF63B8-1672-4AAD-A026-F5453CA5C793}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDeliver.TestProject.Core.Tests", "YDeliver.TestProject.Core.Tests\YDeliver.TestProject.Core.Tests.csproj", "{C574EB26-3838-4518-BF51-BAA6A393382A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A74A1FB5-3BFF-4092-B985-E69DF94E6581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A74A1FB5-3BFF-4092-B985-E69DF94E6581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A74A1FB5-3BFF-4092-B985-E69DF94E6581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A74A1FB5-3BFF-4092-B985-E69DF94E6581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9AF63B8-1672-4AAD-A026-F5453CA5C793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9AF63B8-1672-4AAD-A026-F5453CA5C793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9AF63B8-1672-4AAD-A026-F5453CA5C793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9AF63B8-1672-4AAD-A026-F5453CA5C793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C574EB26-3838-4518-BF51-BAA6A393382A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C574EB26-3838-4518-BF51-BAA6A393382A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C574EB26-3838-4518-BF51-BAA6A393382A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C574EB26-3838-4518-BF51-BAA6A393382A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

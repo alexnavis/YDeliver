@@ -13,10 +13,9 @@ A replacement for good application agnostic builds like rake.
 How do I get this to work?
 --------------------------
 
-Well I've just begun the preliminary commits so it's a bit flaky to start with. The simplest way to see it work is to clone this projects repo and play with the TestProject.
-
+Open a PowerShell prompt in the TestProject folder and invoke the build!
 <code>
-> .\UpdateTestProjectAndBuild.ps1
+> .\build.ps1
 </code>
 
 More to come!

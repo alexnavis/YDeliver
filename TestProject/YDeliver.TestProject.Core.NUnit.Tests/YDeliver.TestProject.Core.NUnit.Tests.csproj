@@ -42,7 +42,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="xunit">
-      <HintPath>..\lib\xunit\xunit.dll</HintPath>
+      <HintPath>..\lib\xunit-1.8\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

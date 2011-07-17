@@ -14,11 +14,8 @@ $global:rootDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 # Could add some smarts to this to find YDeliver automagically
 $ydeliverPath = "$rootDir\lib\YDeliver"
 
-# Need import default build conventions
+# Need import default build conventions and import any custom conventions
 . "$ydeliverPath\Default.Conventions.ps1"
-
-# import convention overrides in $rootDir\build.conventions.ps1 if they exists
-Import-ConventionOverrides
 
 # all of our ducks are in a row, it's time to build!
 . "$ydeliverPath\YBuild\Execute.ps1"

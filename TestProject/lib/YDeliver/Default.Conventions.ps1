@@ -10,3 +10,5 @@ function Import-ConventionOverrides {
         . "$rootDir\build.conventions.ps1"
     }
 }
+
+Import-ConventionOverrides

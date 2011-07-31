@@ -1,7 +1,6 @@
-$pwd = Split-Path -Parent $MyInvocation.MyCommand.Path
+$here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path).Replace(".Tests.", ".")
-. "$pwd\$sut"
-. "$pwd\..\..\lib\Pester\Pester.ps1"
+. "$here\$sut"
 
 Describe "Get-Conventions" {
 

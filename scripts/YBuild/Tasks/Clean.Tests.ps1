@@ -1,12 +1,10 @@
-$pwd = Split-Path -Parent $MyInvocation.MyCommand.Path
+$here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path).Replace(".Tests.", ".")
 
 # Added dummy Task function to remove PSake requirement
 function Task { }
 
-. "$pwd\$sut"
-. "$pwd\..\..\..\lib\Pester\Pester.ps1"
-
+. "$here\$sut"
 
 Describe "Clean-RootOfBuildArtifacts" {
 

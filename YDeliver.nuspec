@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>YDeliver</id>
+    <description>Convention based .Net build and deployment framework</description>
+    <tags>powershell build deploy</tags>
+    <version>0.0.0</version>
+    <authors>Scott Muc</authors>
+    <projectUrl>https://github.com/scottmuc/YDeliver</projectUrl>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+  </metadata>
+</package>
+

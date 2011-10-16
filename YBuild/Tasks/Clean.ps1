@@ -8,6 +8,6 @@ task Clean {
 
     Clean-RootOfBuildArtifacts $rootDir $buildPath
 
-    Exec { msbuild $solutionFile /t:clean } "Could not clean the project"
+    Exec { msbuild $solutionFile /t:clean /noconsolelogger } "Could not clean the project"
     Exec { mkdir $buildPath | Out-Null }
 }

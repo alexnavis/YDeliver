@@ -6,14 +6,14 @@ function Invoke-YBuild {
 
     # some hackery to provide the rootDir to Build.Tasks.ps1
     $global:rootDir = $rootDir
-    . "$PSScriptRoot\Config\Default.Conventions.ps1"
+    . "$PSScriptRoot\Conventions\Defaults.ps1"
 
     Invoke-Psake "$PSScriptRoot\YBuild\Build.Tasks.ps1" `
-        -framework "4.0x64" `
+        -framework $conventions.framework `
         -taskList $tasks `
         -parameters @{
             "buildVersion" = $buildVersion;
-            "ybc" = $ybc;
+            "conventions" = $conventions;
             "rootDir" = $rootDir;
           }
 }

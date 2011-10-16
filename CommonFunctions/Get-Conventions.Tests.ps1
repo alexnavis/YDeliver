@@ -4,16 +4,17 @@ $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path).Replace(".Tests.", ".")
 
 Describe "Get-Conventions" {
 
-    $ybc = @{}
-    $ybc.known_convention = "exist"
+    $conventions = @{}
+    $conventions.known_convention = "exist"
+    $conventions.other_known_convention = "exist"
 
     It "should return the value of a known convention" {
         $convention = Get-Conventions known_convention
         $convention.should.be("exist")
     }
 
-    It "should write an error if it could not find the convention" {
-        Get-Conventions unknown -NoExit
-        $(Get-ConsoleText).should.match("Missing convention")
+    It "should return all conventions asked for" {
+        $resolved = Get-Conventions known_convention, other_known_convention
+        $resolved.length.should.be(2)
     }
 }

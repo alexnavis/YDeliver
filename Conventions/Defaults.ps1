@@ -6,6 +6,7 @@ $conventions.solutionFile = (Resolve-Path $rootDir\*.sln)
 $conventions.toolsPath = "$rootDir\lib"
 
 "Conventions being used:" | Write-Host
+"rootDir`t`t: $rootDir" | Write-Host
 $conventions.keys | % {
     "$_`t: $($conventions.$_)" | Write-Host
 }

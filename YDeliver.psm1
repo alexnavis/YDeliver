@@ -1,4 +1,7 @@
 Import-Module "$PSScriptRoot\lib\PSake\psake.psm1" -Force
+Import-Module "$PSScriptRoot\lib\PowerYaml\PowerYaml.psm1" -Force
+
+gci "$PSScriptRoot\YBuild\Functions" | ? { -not $_.FullName.EndsWith(".Tests.ps1") } | % { . $_.FullName }
 
 function Invoke-YBuild {
     [CmdletBinding()]
@@ -13,6 +16,7 @@ function Invoke-YBuild {
         -taskList $tasks `
         -parameters @{
             "buildVersion" = $buildVersion;
+            "buildConfig" =  (Get-BuildConfiguration $rootDir); 
             "conventions" = $conventions;
             "rootDir" = $rootDir;
           }

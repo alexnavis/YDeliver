@@ -13,10 +13,19 @@ Describe "Clean-RootOfBuildArtifacts" {
 
     Setup -Dir "build\package"
 
-    It "should remove files in bin and obj directories" {
-        Clean-RootOfBuildArtifacts $TestDrive "$TestDrive\build"
-        -not "$TestDrive\project\bin\Release\foo.dll".should.exist()
-        -not "$TestDrive\project\obj\Release\foo.dll".should.exist()
-        -not "$TestDrive\build".should.exist()
+    It "should remove the projects build directory" {
+        Clean-RootOfBuildArtifacts $TestDrive $TestDrive\build
+        $build_dir_exists = Test-Path $TestDrive\build
+        $build_dir_exists.should.be($false)
+    }
+
+    It "should also remove dlls from bin directories" {
+        $dll_exists = Test-Path $TestDrive\project\bin\Release\foo.dll
+        $dll_exists.should.be($false)
+    }
+
+    It "should also remove dlls from obj directories" {
+        $dll_exists = Test-Path $TestDrive\project\obj\Release\foo.dll
+        $dll_exists.should.be($false)
     }
 }

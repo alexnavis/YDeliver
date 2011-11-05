@@ -1,6 +1,6 @@
 Import-Module "$PSScriptRoot\lib\PSake\psake.psm1" -Force
 Import-Module "$PSScriptRoot\lib\PowerYaml\PowerYaml.psm1" -Force
-gci "$PSScriptRoot\YBuild\Functions" | ? { -not $_.FullName.EndsWith(".Tests.ps1") } | % { . $_.FullName }
+. "$PSScriptRoot\CommonFunctions\Get-Configuration.ps1"
 
 function Invoke-YBuild {
     [CmdletBinding()]

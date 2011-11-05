@@ -13,7 +13,7 @@ function Write-PackageHelp {
 }
 
 task Package {
-    $buildPath,$packagePath,$toolsPath,$solutionFile = Get-Conventions buildPath,packagePath,toolsPath,solutionFile
+    $buildPath,$packagePath = Get-Conventions buildPath,packagePath
 
     if ($buildConfig.packageContents -eq $null) {
         Write-PackageHelp
@@ -25,15 +25,6 @@ task Package {
     }
 
     foreach($source in $($buildConfig.packageContents).keys){
-        Copy-ArtifactItem "$rootDir\$source" "$($packagePath)\$($config.packageContents[$source])"
+        Copy-ArtifactItem "$rootDir\$source" "$($packagePath)\$($buildConfig.packageContents[$source])"
     }
-    return
-    pushd $packagePath
-
-    $zip = "$toolsPath\7z\7za.exe"
-    $zipFileName = Get-ChildItem $solutionFile | % { $_.BaseName }
-
-    Exec { & $zip a -r $buildPath\$($zipFileName).zip * | Out-Null }
-
-    popd
 }

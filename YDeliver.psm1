@@ -1,11 +1,10 @@
 Import-Module "$PSScriptRoot\lib\PSake\psake.psm1" -Force
 Import-Module "$PSScriptRoot\lib\PowerYaml\PowerYaml.psm1" -Force
-
 gci "$PSScriptRoot\YBuild\Functions" | ? { -not $_.FullName.EndsWith(".Tests.ps1") } | % { . $_.FullName }
 
 function Invoke-YBuild {
     [CmdletBinding()]
-    param($tasks, $buildVersion = "1.0.0", $rootDir = $pwd)
+    param([string[]] $tasks = @('Help'), $buildVersion = "1.0.0", $rootDir = $pwd)
 
     # some hackery to provide the rootDir to Build.Tasks.ps1
     $global:rootDir = $rootDir
@@ -22,4 +21,19 @@ function Invoke-YBuild {
           }
 }
 
-Export-ModuleMember Invoke-YBuild
+function Invoke-YInstall {
+    [CmdletBinding()]
+    param([string[]] $tasks = @('Help'), $rootDir = $pwd)
+
+    # some hackery to provide the rootDir to Install.Tasks.ps1
+    $global:rootDir = $rootDir
+    . "$PSScriptRoot\Conventions\Defaults.ps1"
+
+    Invoke-Psake "$PSScriptRoot\YInstall\Install.Tasks.ps1" `
+        -taskList $tasks `
+        -parameters @{
+            "conventions" = $conventions;
+            "rootDir" = $rootDir;
+          }
+}
+Export-ModuleMember Invoke-YBuild, Invoke-YInstall

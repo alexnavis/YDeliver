@@ -5,9 +5,9 @@ $conventions.packagePath = "$($conventions.buildPath)\package"
 $conventions.solutionFile = (Resolve-Path $rootDir\*.sln)
 $conventions.toolsPath = "$rootDir\lib"
 
-"Conventions being used:" | Write-Host
-"rootDir`t`t: $rootDir" | Write-Host
+"Conventions being used:" 
+"rootDir`t`t: $rootDir"
 $conventions.keys | % {
-    "$_`t: $($conventions.$_)" | Write-Host
+    "$_`t: $($conventions.$_)"
 }
-"" | Write-Host
+""

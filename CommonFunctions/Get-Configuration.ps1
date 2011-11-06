@@ -1,9 +1,11 @@
 function Get-Configuration {
     param($path, $name)
 
-    $config = @{}
+    $config = @{ HasNoErrors = $false; HasErrors = $true; }
     if (Test-Path "$path\$name.yml") {
        $config = Get-Yaml -FromFile "$path\$name.yml"
+       $config.HasNoErrors = $true
+       $config.HasErrors   = $false
     }
     $config
 }

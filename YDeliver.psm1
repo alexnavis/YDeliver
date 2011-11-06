@@ -32,6 +32,7 @@ function Invoke-YInstall {
     Invoke-Psake "$PSScriptRoot\YInstall\Install.Tasks.ps1" `
         -taskList $tasks `
         -parameters @{
+            "installConfig" = (Get-InstallConfiguration $rootDir);
             "conventions" = $conventions;
             "rootDir" = $rootDir;
           }

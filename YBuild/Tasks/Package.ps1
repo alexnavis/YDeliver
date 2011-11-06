@@ -15,10 +15,7 @@ function Write-PackageHelp {
 task Package {
     $buildPath,$packagePath = Get-Conventions buildPath,packagePath
 
-    if ($buildConfig.packageContents -eq $null) {
-        Write-PackageHelp
-        return
-    }
+    if ($buildConfig.HasErrors) { Write-PackageHelp; return }
 
     if (-not (Test-Path $packagePath)) {
         md $packagePath | Out-Null

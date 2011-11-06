@@ -11,12 +11,19 @@ Describe "Clean-RootOfBuildArtifacts" {
     Setup -File "project\bin\Release\foo.dll"
     Setup -File "project\obj\Release\foo.dll"
 
+    Setup -File "webproject\bin\foo.dll"
+
     Setup -Dir "build\package"
 
     It "should remove the projects build directory" {
         Clean-RootOfBuildArtifacts $TestDrive $TestDrive\build
         $build_dir_exists = Test-Path $TestDrive\build
         $build_dir_exists.should.be($false)
+    }
+
+    It "should cleanup the bin directory of a web project" {
+        $website_bin_exists = Test-Path $TestDrive\webproject\bin\foo.dll
+        $website_bin_exists.should.be($false)
     }
 
     It "should also remove dlls from bin directories" {

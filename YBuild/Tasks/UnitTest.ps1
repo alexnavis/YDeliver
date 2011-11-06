@@ -1,7 +1,12 @@
 task UnitTest {
-    $toolsPath, $buildPath = Get-Conventions toolsPath, buildPath
+    $toolsPath, $buildPath, $unitTestPathPattern = Get-Conventions toolsPath, buildPath, unitTestPathPattern
 
-    Get-ChildItem "$rootDir\*Unit.Tests\*.csproj" | %{
+    if (-not (Test-Path $buildPath)) {
+        md $buildPath | Out-Null
+    }
+
+    Write-Host "echoing... $unitTestPathPattern"
+    Get-ChildItem "$rootDir\$unitTestPathPattern\*.csproj" | %{
         $testProjects += "$(split-path $_.fullname)\bin\Release\$([system.io.path]::GetFilenameWithoutExtension($_.name)).dll "
     }
 

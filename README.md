@@ -24,3 +24,20 @@ More to come!
 * More information on the rationale behind some of the crazy decisions
 * More Unit Test frameworks supports
 * Deployment stuff added
+
+VM for TestProject
+------------------
+
+* Windows 2008 R2 Web Server
+* Set Administrator password to Password2112
+* Install VirtualBox Guest Additions
+
+Ideas
+-----
+
+* Plugin architecture
+* NUnit execution changes between versions
+* generate configuration yaml explicitly showing defaults and documentation
+* simplify augmenting conventions (unit test path and tools path are good examples)
+* how to get started with YDeliver
+

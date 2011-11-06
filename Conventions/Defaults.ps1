@@ -4,6 +4,7 @@ $conventions.buildPath = "$rootDir\build"
 $conventions.packagePath = "$($conventions.buildPath)\package"
 $conventions.solutionFile = (Resolve-Path $rootDir\*.sln)
 $conventions.toolsPath = "$rootDir\lib"
+$conventions.inetpubPrefix = "C:"
 
 "Conventions being used:" 
 "rootDir`t`t: $rootDir"

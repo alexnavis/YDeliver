@@ -12,8 +12,7 @@ Describe "Copy-Website" {
 
     $conventions = @{ inetpubPrefix = $TestDrive }
     It "copies files from a path relative to execution into standard IIS folders" {
-        # TODO fix bug in Pester that makes it hard to asign variables in 'In' statements
-        In "$TestDrive\package" -Execute { Copy-Website "label" "website" | Set-Variable -Name websitePath }
+        $websitePath = Copy-Website "label" "$TestDrive\package\website"
         "$TestDrive\inetpub\wwwroot\label\bin".should.exist()
     }
 }

@@ -2,9 +2,7 @@ Import-Module "$PSScriptRoot\lib\PSake\psake.psm1" -Force
 Import-Module "$PSScriptRoot\lib\PowerYaml\PowerYaml.psm1" -Force
 . "$PSScriptRoot\CommonFunctions\Get-Configuration.ps1"
 
-if ( @(Get-Module | ? { $_.Name -eq "webadministration" }).count -eq 0 ) {
-    Import-Module webadministration
-}
+
 
 function Invoke-YBuild {
     [CmdletBinding()]

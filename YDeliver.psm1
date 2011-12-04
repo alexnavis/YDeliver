@@ -39,4 +39,40 @@ function Invoke-YInstall {
             "rootDir" = $rootDir;
           }
 }
-Export-ModuleMember Invoke-YBuild, Invoke-YInstall
+
+function Get-Plugin {
+    param ($name, $file)
+    if (Test-Path $file) {
+        Remove-Item $file | Out-Null
+    }
+    (new-object Net.WebClient).DownloadFile("https://github.com/$name/zipball/master", $file)
+}
+
+
+function Install-YPlugin {
+    [CmdletBinding()]
+    param($name, $rootDir = $pwd)
+
+    # some hackery to provide the rootDir to Install.Tasks.ps1
+    $global:rootDir = $rootDir
+    . "$PSScriptRoot\Conventions\Defaults.ps1"
+
+    $temp_file = "$($env:Temp)\ydeliver-plugin.zip"
+    Get-Plugin $name $temp_file
+
+    if (Test-Path .\yplugin) {
+        Remove-Item .\yplugin -Recurse -Force
+    }
+
+    $7z = "$PSScriptRoot\Lib\7z\7za.exe"
+    & $7z x -y -oyplugin $temp_file
+
+    $extract_dir = (Resolve-Path yplugin\*).Path 
+    copy $extract_dir\*.ps1 $PSScriptRoot\YBuild\Tasks
+
+    if (Test-Path $extract_dir\packages.config) {
+        nuget install $extract_dir\packages.config -OutputDirectory $conventions.toolsPath -ExcludeVersion
+    }
+}
+
+Export-ModuleMember Invoke-YBuild, Invoke-YInstall, Install-YPlugin

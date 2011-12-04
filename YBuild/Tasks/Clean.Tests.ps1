@@ -1,7 +1,6 @@
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path).Replace(".Tests.", ".")
 
-# Added dummy Task function to remove PSake requirement
 function Task { }
 
 . "$here\$sut"
@@ -22,8 +21,8 @@ Describe "Clean-RootOfBuildArtifacts" {
     }
 
     It "should cleanup the bin directory of a web project" {
-        $website_bin_exists = Test-Path $TestDrive\webproject\bin\foo.dll
-        $website_bin_exists.should.be($false)
+        $deleted_file = "$TestDrive\webproject\bin\foo.dll"
+        (Test-Path $deleted_file).should.be($false)
     }
 
     It "should also remove dlls from bin directories" {

@@ -15,7 +15,7 @@ How do I get this to work?
 
 Open a PowerShell prompt in the TestProject folder and invoke the build!
 <code>
-> .\build.ps1
+> .\build.bat
 </code>
 
 More to come!
@@ -40,4 +40,4 @@ Ideas
 * generate configuration yaml explicitly showing defaults and documentation
 * simplify augmenting conventions (unit test path and tools path are good examples)
 * how to get started with YDeliver
-
+* Naming { build, install

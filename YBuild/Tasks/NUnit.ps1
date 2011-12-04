@@ -1,4 +1,4 @@
-task UnitTest {
+task NUnit {
     $toolsPath, $buildPath, $unitTestPathPattern = Get-Conventions toolsPath, buildPath, unitTestPathPattern
 
     if (-not (Test-Path $buildPath)) {

@@ -57,9 +57,27 @@ function Unzip-File {
     &$7z x -y $source $destination 
 }
 
+function Install-BuildTasks($extract_dir){
+    Write-Host -fore yellow "Installing build tasks"
+    $buildTasks = "$PSScriptRoot\YBuild\Tasks"
+    Get-Item $extract_dir\*.ps1 | %{ 
+        Write-Host "`tCopying $($_.name) to $buildTasks"
+        copy $_ $buildTasks
+    }
+}
+
+function Install-NugetDependencies($extract_dir){
+    Write-Host -fore yellow "Installing dependencies for the plugin using Nuget"
+    if (Test-Path $extract_dir\packages.config) {
+        &"$PSScriptRoot\Lib\Nuget\Nuget.exe" install $extract_dir\packages.config -OutputDirectory $conventions.toolsPath -ExcludeVersion
+    }
+}
+
 function Install-YPlugin {
     [CmdletBinding()]
     param($name, $rootDir = $pwd)
+
+    Write-Host -fore yellow "Installing plugin $name"
 
     # some hackery to provide the rootDir to Install.Tasks.ps1
     $global:rootDir = $rootDir
@@ -74,14 +92,12 @@ function Install-YPlugin {
     }
 
     $7z = "$PSScriptRoot\Lib\7z\7za.exe"
-    Unzip-File $temp_file $temp_extracted $7z
+    Unzip-File $temp_file $temp_extracted $7z | Out-Null
 
     $extract_dir = (Resolve-Path "$temp_extracted\*").Path 
-    copy $extract_dir\*.ps1 $PSScriptRoot\YBuild\Tasks
 
-    if (Test-Path $extract_dir\packages.config) {
-        nuget install $extract_dir\packages.config -OutputDirectory $conventions.toolsPath -ExcludeVersion
-    }
+    Install-BuildTasks $extract_dir
+    Install-NugetDependencies $extract_dir
 }
 
 Export-ModuleMember Invoke-YBuild, Invoke-YInstall, Install-YPlugin

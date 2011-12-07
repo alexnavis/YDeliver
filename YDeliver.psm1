@@ -48,6 +48,14 @@ function Get-Plugin {
     (new-object Net.WebClient).DownloadFile("https://github.com/$name/zipball/master", $file)
 }
 
+function Unzip-File {
+    param($source, $destination, $7z)
+    if ($destination -ne "") {
+        Remove-Item $destination -Recurse -ErrorAction silentlycontinue
+        $destination = "-o" + $destination 
+    }
+    &$7z x -y $source $destination 
+}
 
 function Install-YPlugin {
     [CmdletBinding()]
@@ -58,16 +66,17 @@ function Install-YPlugin {
     . "$PSScriptRoot\Conventions\Defaults.ps1"
 
     $temp_file = "$($env:Temp)\ydeliver-plugin.zip"
+    $temp_extracted = "$($env:Temp)\ydeliver-plugin"
     Get-Plugin $name $temp_file
 
-    if (Test-Path .\yplugin) {
-        Remove-Item .\yplugin -Recurse -Force
+    if (Test-Path $temp_extracted) {
+        Remove-Item $temp_extracted -Recurse -Force
     }
 
     $7z = "$PSScriptRoot\Lib\7z\7za.exe"
-    & $7z x -y -oyplugin $temp_file
+    Unzip-File $temp_file $temp_extracted $7z
 
-    $extract_dir = (Resolve-Path yplugin\*).Path 
+    $extract_dir = (Resolve-Path "$temp_extracted\*").Path 
     copy $extract_dir\*.ps1 $PSScriptRoot\YBuild\Tasks
 
     if (Test-Path $extract_dir\packages.config) {

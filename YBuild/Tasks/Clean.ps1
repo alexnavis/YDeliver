@@ -5,6 +5,6 @@ function global:Clean-RootOfBuildArtifacts($path, $buildPath) {
 
 task Clean {
     $buildPath, $solutionFile = Get-Conventions buildPath, solutionFile
-    Exec { msbuild $solutionFile /t:clean /noconsolelogger } "Could not clean the project"
+    Exec { msbuild $solutionFile /t:clean } "Could not clean the project"
     Clean-RootOfBuildArtifacts $rootDir $buildPath
 }

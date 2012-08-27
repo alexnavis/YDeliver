@@ -16,7 +16,9 @@ function global:Version-AssemblyInfoFiles($version) {
 }
 
 task Compile {
+	
     $solutionFile = Get-Conventions solutionFile
-    Version-AssemblyInfoFiles $buildVersion
-    Exec { msbuild $solutionFile /p:Configuration=Release /noconsolelogger } "Build Failed - Compilation"
+    echo $solutionFile
+	Version-AssemblyInfoFiles $buildVersion
+    Exec { msbuild $solutionFile /p:Configuration=Debug /p:Platform='Any CPU'} "Build Failed - Compilation"
 }

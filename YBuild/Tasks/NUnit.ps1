@@ -7,7 +7,7 @@ task NUnit {
 
     Write-Host "echoing... $unitTestPathPattern"
     Get-ChildItem "$rootDir\$unitTestPathPattern\*.csproj" | %{
-        $testProjects += "$(split-path $_.fullname)\bin\Release\$([system.io.path]::GetFilenameWithoutExtension($_.name)).dll "
+        $testProjects += "$(split-path $_.fullname)\bin\Debug\$([system.io.path]::GetFilenameWithoutExtension($_.name)).dll "
     }
 
     $nunit = "$toolsPath\nunit\nunit-console.exe"
